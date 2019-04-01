@@ -31,7 +31,7 @@
  * - testGetStubs: This should return an array with all direct stubs that were
  * defined for this ViewModel.
  */
-Ext.define("mvvm.excercises.block1.Stub", {
+Ext.define("mvvm.exercises.block1.Stub", {
 
     extend : "Ext.app.ViewModel",
 

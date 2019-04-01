@@ -22,40 +22,42 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
  * USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+describe('mvvm.excercices.block1.ConfigTest', function(t) {
 
 
-/**
- * This class is a Component.
- * Implement the methods and make sure they satisfy the following demands:
- * - testSetX: This method should change the value of the model-property "html" and make
- * sure changes are immediately available in the binding. The value to which "html"
- * should be changed is passed as an argument to the method.
- *
- * NOTE!
- * ======
- * Remember what we have said about the pipeline regarding applyData / applyBind.
- * The applyBind method of the View is only called after one very important operation
- * has finished. To make sure this operation preceeds, you have to configure this
- * view component with another important property, or trigger this very important
- * operation manually.
- */
-Ext.define("mvvm.excercises.block1.Vm1", {
+    t.it("testing implementation", function(t) {
 
-    extend : "Ext.Component",
+        const comp = Ext.create("mvvm.exercises.block1.Config");
 
-    viewModel : {
-        data : {
-            html : 'a'
-        }
-    },
+        let NEWVALUE, OLDVALUE;
 
-    bind : {
-        html : '{html}'
-    },
+        comp.ping = function(newValue, oldValue) {
+            NEWVALUE = newValue;
+            OLDVALUE = oldValue;
+        };
 
-    /**
-     * Changes "x" of the ViewModel and makes sure it's immediately
-     * available for the bound value.
-     */
-    testSetX : function(value) {}
+        t.expect(comp.setFoo).toBeDefined();
+        t.expect(comp.applyFoo).toBeDefined();
+        t.expect(comp.updateFoo).toBeDefined();
+        t.expect(comp.getFoo).toBeDefined();
+
+        comp.setFoo(1);
+        t.expect(comp.getFoo()).not.toBe(1);
+
+        comp.setFoo("one");
+        t.expect(comp.getFoo()).not.toBe("one");
+
+        comp.setFoo("Sun");
+        t.expect(comp.getFoo()).toBe("Sun");
+
+        comp.setFoo("Sun2");
+        t.expect(comp.getFoo()).toBe("Sun2");
+
+        t.expect(NEWVALUE).toBe("Sun2");
+        t.expect(OLDVALUE).toBe("Sun");
+    });
+
+
+
+
 });

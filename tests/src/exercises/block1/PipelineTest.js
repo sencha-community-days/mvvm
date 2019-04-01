@@ -22,22 +22,39 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
  * USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-describe('mvvm.excercices.block1.BindingTest', function(t) {
+describe('mvvm.excercices.block1.PipelineTest', function(t) {
 
 
     t.it("testing implementation", function(t) {
 
-        const comp = Ext.create("mvvm.excercises.block1.Binding"),
-              vm   = comp.getViewModel(),
-              val  = "foobar";
+        const comp     = Ext.create("mvvm.exercises.block1.Pipeline"),
+              Pipeline = mvvm.exercises.block1.Pipeline,
+              sol      = {},
+              pipe     = comp.getPipeline(),
+              mapped   = [];
 
-        t.expect(comp.testProp).toBe(-1);
+        // remap and obfuscate
+        sol[Pipeline.APPLY_VM_DATA] = "g";
+        sol[Pipeline.CREATE_ROOT_STUB] = "w";
+        sol[Pipeline.CREATE_CHILD_STUB] = "r";
+        sol[Pipeline.RENDER] = "q";
+        sol[Pipeline.APPLY_BIND] = "m";
+        sol[Pipeline.STUB_LOOKUP] = "k";
+        sol[Pipeline.APPLY_CB_SETTERS] = "p";
 
+        for (var i = 0, len = pipe.length; i < len; i++) {
+            mapped.push(sol[pipe[i]]);
+        }
 
-        vm.set("foo", val);
-        vm.notify();
-
-        t.expect(comp.testProp).toBe(0);
+        t.expect(mapped).toEqual([
+            sol[Pipeline.APPLY_VM_DATA],
+            sol[Pipeline.CREATE_ROOT_STUB],
+            sol[Pipeline.CREATE_CHILD_STUB],
+            sol[Pipeline.RENDER],
+            sol[Pipeline.APPLY_BIND],
+            sol[Pipeline.STUB_LOOKUP],
+            sol[Pipeline.APPLY_CB_SETTERS]
+        ]);
     });
 
 

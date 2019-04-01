@@ -22,20 +22,22 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
  * USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-describe('mvvm.excercices.block1.Vm1Test', function(t) {
+describe('mvvm.excercices.block1.BindingTest', function(t) {
 
 
     t.it("testing implementation", function(t) {
 
-        const comp = Ext.create("mvvm.excercises.block1.Vm1"),
+        const comp = Ext.create("mvvm.exercises.block1.Binding"),
               vm   = comp.getViewModel(),
               val  = "foobar";
 
-        comp.testSetX(val);
+        t.expect(comp.testProp).toBe(-1);
 
-        t.expect(vm.get("html")).toBe(val);
-        t.expect(comp.html).toBe(vm.get("html"));
 
+        vm.set("foo", val);
+        vm.notify();
+
+        t.expect(comp.testProp).toBe(0);
     });
 
 

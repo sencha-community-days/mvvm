@@ -25,16 +25,49 @@
 
 
 /**
- * This Ext.Component should be configured with a ViewModel.
- * The ViewModel should contain a model-property named "x".
- * This property should be bound to a "foo" property of this
- * component, so whenever "x" changes, "foo" changes, too.
- *
+ * This file consists of two class definitions: A custom implementation of
+ * a TextField and a Container, which serves as the main-container for this exercise.
+ * The container holds the custom textfield and a regular textfield as child-items.
+ * The custom Textfield #sourceInput should now be configured that it sends both its
+ * "disabled"- as well its "value"-value to the "targetInput" - read: The #targetInput
+ * should be bound to these properties.
+ * You should only use a "bind" config for #targetInput.
  */
-Ext.define("mvvm.excercises.block1.Data", {
+Ext.define("mvvm.exercises.block2.null.TextField", {
 
+    extend : 'Ext.form.field.Text',
 
-    extend : "Ext.Component"
-
-
+    alias : 'widget.mvvmtextfield'
 });
+
+
+
+Ext.define("mvvm.exercises.block2.Null", {
+
+
+    extend : "Ext.Panel",
+
+    viewModel : true,
+
+    bind : {
+        title : '{mytextfield.value}'
+    },
+
+    layout : {
+        type : 'vbox',
+        align : 'stretch'
+    },
+
+    items : [{
+        xtype : 'form',
+        items : [{
+            xtype : 'mvvmtextfield',
+            itemId : 'sourceInput'
+        }, {
+            xtype : 'textfield',
+            itemId : 'targetInput'
+        }]
+    }]
+
+
+})

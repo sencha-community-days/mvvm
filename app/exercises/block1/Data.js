@@ -25,24 +25,16 @@
 
 
 /**
- * This class should be configured with a property "foo", according
- * to ExtJS' config system.
- * Whenever the "foo" property is changed, the following logic should be
- * invoked:
- * - Changing the property is only allowed if the new value for "foo" is a
- * string and starts with an uppercase "S".
- * - whenever the value for "foo" was successfully updated, the method
- * "ping()" should be called, passing the new value for "foo", and the old
- * value for "foo".
+ * This Ext.Component should be configured with a ViewModel.
+ * The ViewModel should contain a model-property named "x".
+ * This property should be bound to a "foo" property of this
+ * component, so whenever "x" changes, "foo" changes, too.
  *
  */
-Ext.define("mvvm.excercises.block1.Config", {
+Ext.define("mvvm.exercises.block1.Data", {
 
 
-    /**
-     * Do not change this.
-     */
-    ping : function(newValue, oldValue) {
+    extend : "Ext.Component"
 
-    }
+
 });

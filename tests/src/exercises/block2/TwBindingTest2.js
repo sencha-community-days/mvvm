@@ -22,50 +22,35 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
  * USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
+describe('mvvm.excercices.block2.TwBindingTest2', function(t) {
 
 
-/**
- * Create a custom binding for a descriptor "{foo}" for the component's viewModel.
- * This binding should trigger the method "bindingChanged" once the value for
- * "foo" was changed.
- * You can re-use the Ext.Component's "initComponent()" for registering the custom
- * binding.
- */
-Ext.define("mvvm.excercises.block1.Binding", {
+    t.it("testing implementation", function(t) {
 
+        const comp = Ext.create("mvvm.exercises.block2.TwBinding2", {
+            renderTo : document.body,
+            width : 600,
+            height : 400
+            }),
+            val  = "foobar";
 
-    extend : "Ext.Component",
+        t.expect(comp.getViewModel()).toBeTruthy();
+        t.expect(comp.getTitle()).toBeFalsy();
+        t.expect(comp.getBind().title).toBeTruthy();
+        t.expect(comp.down('#textInput').getBind()).toBeFalsy();
 
-    /**
-     * Do not Change this.
-     */
-    testProp : -1,
+        t.expect(comp.down('#textInput').getReference()).toBeTruthy();
+        t.expect(comp.down('#textInput').getPublishes()).toBeTruthy();
 
-    viewModel : {
-        data : {
-            foo : undefined,
-        }
-    },
-
-
-    /**
-     * You can re-use this to create the custom binding.
-     */
-    initComponent : function() {
-
-        const me = this;
-
-        me.callParent(arguments);
-    },
+        t.type(comp.down('#textInput'), val, function() {
+            t.expect(comp.getTitle()).toBe(val);
+        });
 
 
 
-    /**
-     * Do not change this.
-     */
-    bindingChanged : function() {
-        const me = this;
-        me.testProp = 0;
-    }
+    });
+
+
+
 
 });

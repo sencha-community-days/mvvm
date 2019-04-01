@@ -22,39 +22,34 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
  * USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-describe('mvvm.excercices.block1.PipelineTest', function(t) {
+describe('mvvm.excercices.block2.EmptyTest', function(t) {
 
 
     t.it("testing implementation", function(t) {
 
-        const comp     = Ext.create("mvvm.excercises.block1.Pipeline"),
-              Pipeline = mvvm.excercises.block1.Pipeline,
-              sol      = {},
-              pipe     = comp.getPipeline(),
-              mapped   = [];
+        const comp = Ext.create("mvvm.exercises.block2.Empty", {
+            renderTo : document.body,
+            width : 600,
+            height : 400
+            }),
+            vm = comp.getViewModel();
 
-        // remap and obfuscate
-        sol[Pipeline.APPLY_VM_DATA] = "g";
-        sol[Pipeline.CREATE_ROOT_STUB] = "w";
-        sol[Pipeline.CREATE_CHILD_STUB] = "r";
-        sol[Pipeline.RENDER] = "q";
-        sol[Pipeline.APPLY_BIND] = "m";
-        sol[Pipeline.STUB_LOOKUP] = "k";
-        sol[Pipeline.APPLY_CB_SETTERS] = "p";
+        vm.notify();
 
-        for (var i = 0, len = pipe.length; i < len; i++) {
-            mapped.push(sol[pipe[i]]);
-        }
+        t.expect(vm.getFormulas().subject).toBeDefined();
+        t.expect(vm.getFormulas().subject.get).toBeDefined();
+        t.expect(vm.getFormulas().subject.set).toBeDefined();
 
-        t.expect(mapped).toEqual([
-            sol[Pipeline.APPLY_VM_DATA],
-            sol[Pipeline.CREATE_ROOT_STUB],
-            sol[Pipeline.CREATE_CHILD_STUB],
-            sol[Pipeline.RENDER],
-            sol[Pipeline.APPLY_BIND],
-            sol[Pipeline.STUB_LOOKUP],
-            sol[Pipeline.APPLY_CB_SETTERS]
-        ]);
+        t.expect(vm.get('subject')).toBe('foo');
+
+        vm.set('subject', 'a');
+        vm.notify();
+        t.expect(comp.down('#textField').getValue()).toBe('a');
+
+        vm.set('subject', null);
+        vm.notify();
+        t.expect(comp.down('#textField').getValue()).toBe('empty');
+
     });
 
 

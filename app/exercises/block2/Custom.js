@@ -22,42 +22,46 @@
  * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
  * USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-describe('mvvm.excercices.block1.ConfigTest', function(t) {
 
 
-    t.it("testing implementation", function(t) {
+/**
+ * This file consists of two class definitions: A custom implementation of
+ * a Component #mvvmcomponent and a Panel, which serves as the main-container
+ * for this exercise.
+ * The container holds two textfields, #afield and #bfield, along with the
+ * #mvvcomponent.
+ * #mvvcomponent should now be enhanced so that it contains two config-properties
+ * "a" and "b" which both are capable of seeding their values to interested components
+ * bound by a ViewModel.
+ * Only #afield and #bfield should use binding.
+ *
+ *
+ */
+Ext.define("mvvm.exercises.block2.Component", {
 
-        const comp = Ext.create("mvvm.excercises.block1.Config");
+    extend : "Ext.Component",
 
-        let NEWVALUE, OLDVALUE;
+    alias : 'widget.mvvmcomponent'
 
-        comp.ping = function(newValue, oldValue) {
-            NEWVALUE = newValue;
-            OLDVALUE = oldValue;
-        };
 
-        t.expect(comp.setFoo).toBeDefined();
-        t.expect(comp.applyFoo).toBeDefined();
-        t.expect(comp.updateFoo).toBeDefined();
-        t.expect(comp.getFoo).toBeDefined();
-
-        comp.setFoo(1);
-        t.expect(comp.getFoo()).not.toBe(1);
-
-        comp.setFoo("one");
-        t.expect(comp.getFoo()).not.toBe("one");
-
-        comp.setFoo("Sun");
-        t.expect(comp.getFoo()).toBe("Sun");
-
-        comp.setFoo("Sun2");
-        t.expect(comp.getFoo()).toBe("Sun2");
-
-        t.expect(NEWVALUE).toBe("Sun2");
-        t.expect(OLDVALUE).toBe("Sun");
-    });
+});
 
 
 
+Ext.define("mvvm.exercises.block2.Custom", {
+
+    extend : "Ext.Panel",
+
+    viewModel : true,
+
+    items : [{
+        xtype : 'mvvmcomponent'
+    }, {
+        xtype : 'textfield',
+        itemId : 'afield'
+    }, {
+        xtype : 'textfield',
+        itemId : 'bfield'
+    }]
 
 });

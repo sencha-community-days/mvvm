@@ -16,16 +16,26 @@ harness.configure({
 harness.start({
     group : 'mvvm',
     items : [{
-        group : ' excercises',
+        group : ' exercises',
         items : [{
             group : ' block1',
             items : [
-                'src/excercises/block1/PipelineTest.js',
-                'src/excercises/block1/ConfigTest.js',
-                'src/excercises/block1/DataTest.js',
-                'src/excercises/block1/StubTest.js',
-                'src/excercises/block1/Vm1Test.js',
-                'src/excercises/block1/BindingTest.js'
+                'src/exercises/block1/PipelineTest.js',
+                'src/exercises/block1/ConfigTest.js',
+                'src/exercises/block1/DataTest.js',
+                'src/exercises/block1/StubTest.js',
+                'src/exercises/block1/Vm1Test.js',
+                'src/exercises/block1/BindingTest.js'
+            ]
+        }, {
+            group : ' block2',
+            items : [
+                'src/exercises/block2/TwBindingTest.js',
+                'src/exercises/block2/PropBindTest.js',
+                'src/exercises/block2/TwBindingTest2.js',
+                'src/exercises/block2/EmptyTest.js',
+                'src/exercises/block2/CustomTest.js',
+                'src/exercises/block2/NullTest.js'
             ]
         }]
     }]
