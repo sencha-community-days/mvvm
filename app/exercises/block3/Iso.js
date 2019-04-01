@@ -39,8 +39,6 @@ Ext.define("mvvm.exercises.block3.Iso", {
 
     extend : 'Ext.Panel',
 
-
-
     title : "mvvm.exercises.block3.Iso",
 
     layout : {
@@ -48,11 +46,8 @@ Ext.define("mvvm.exercises.block3.Iso", {
         align : 'stretch'
     },
 
-
     items : [{
         xtype  : 'grid',
-
-
         flex : 1,
         columns : [{
             flex : 1,
