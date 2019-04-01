@@ -8,6 +8,11 @@ mvvm.tests.config.paths = {
         js : {
             url : "../../ext/build/ext-all-debug.js"
         }
+    },
+    mvvm : {
+        css : {
+            url : '../../build/development/mvvm/classic/resources/mvvm-all.css'
+        }
     }
 }
 

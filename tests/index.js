@@ -9,7 +9,8 @@ harness.configure({
 
     },
     preload        : [
-        mvvm.tests.config.paths.extjs.js.url
+        mvvm.tests.config.paths.extjs.js.url,
+        mvvm.tests.config.paths.mvvm.css.url
     ]
 });
 
@@ -36,6 +37,11 @@ harness.start({
                 'src/exercises/block2/EmptyTest.js',
                 'src/exercises/block2/CustomTest.js',
                 'src/exercises/block2/NullTest.js'
+            ]
+        }, {
+            group : ' block3',
+            items : [
+                'src/exercises/block3/IsoTest.js'
             ]
         }]
     }]
