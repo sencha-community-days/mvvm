@@ -5,6 +5,12 @@ harness.configure({
     disableCaching : true,
     loaderPath     : {
 
+        /**
+         * ux
+         */
+        'Ext.ux' : "../../../../ext/packages/ux/src/",
+
+
         'mvvm' : '../app'
 
     },
@@ -41,7 +47,8 @@ harness.start({
         }, {
             group : ' block3',
             items : [
-                'src/exercises/block3/IsoTest.js'
+                'src/exercises/block3/IsoTest.js',
+                'src/exercises/block3/SessTest.js'
             ]
         }]
     }]
