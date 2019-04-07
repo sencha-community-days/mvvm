@@ -31,7 +31,7 @@
  * 3) Clicking a row should show all its associated SessCountryModel-data in the grid below
  * 4) Clicking the edit button opens up a modal dialog for editing SessModel data.
  * Changing data should not be reflected in the parent-view. Until...
- * 5) A clck on the Save Button writes all changes back to the parent view.
+ * 5) A click on the Save Button writes all changes back to the parent view.
  *
  * Use ViewModels and bindings where applicable.
  * Reuse classes out of the *.sess.* namespace. Use sessions.

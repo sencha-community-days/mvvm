@@ -47,6 +47,7 @@ harness.start({
         }, {
             group : ' block3',
             items : [
+                'src/exercises/block3/TwBindingTest.js',
                 'src/exercises/block3/IsoTest.js',
                 'src/exercises/block3/SessTest.js'
             ]
