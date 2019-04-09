@@ -25,30 +25,8 @@
 
 
 /**
- * This class tests your understanding regarding the correct order in which
- * ViewModel-data View-Bindings are set up.
- * The method "getPipeline" should return the statics representing
- * VM-/View-Operations in their correct order.
+ * Can you find a way to "force" a ViewModel to update the binding
+ * without even stepping into a deferred method?
  *
+ * (Hint: no test available. Try & Discuss!)
  */
-Ext.define("mvvm.excercises.block1.Pipeline", {
-
-    statics : {
-        CREATE_ROOT_STUB  : "creates RootStub",
-        APPLY_BIND        : "applies binds (bind descriptors) to ViewModel",
-        APPLY_CB_SETTERS  : "applies callbacks for setters",
-        STUB_LOOKUP       : "looks up stubs in ViewModel",
-        CREATE_CHILD_STUB : "creates child stubs",
-        RENDER            : "Ext.Component renders",
-        APPLY_VM_DATA     : "Ext.app.ViewModel applyData"
-    },
-
-
-    /**
-     * Returns VM-/Viewoperations as an array in their correct
-     * order.
-     */
-    getPipeline : function() {
-
-    }
-});

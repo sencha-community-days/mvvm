@@ -3,8 +3,9 @@
 ## Recommended order
 
 * Pipeline
-* Config-Test
-* Data-Test
-* Stub-Test
-* Vm1-Test
-* Binding-Test
+* Config
+* Data
+* Stub
+* Vm1
+* Binding
+* ForceCode
